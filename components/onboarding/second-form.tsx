@@ -38,7 +38,7 @@ export default function SecondPage() {
               </FieldLabel>
 
               <RadioGroup defaultValue="" name="career-interest" aria-label="Select your career interest">
-                {careers.map((career, i) => (
+                {careers.map((career) => (
                   <div className="flex items-center gap-3" key={career.value}>
                     <RadioGroupItem value={career.value} id={`career-${career.value}`} />
                     <Label htmlFor={`career-${career.value}`}>{career.label}</Label>
