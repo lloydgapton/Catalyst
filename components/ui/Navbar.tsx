@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Activity,
-  History,
   LayoutDashboard,
   LogOutIcon,
   Tickets,

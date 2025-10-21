@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 
-export default function page() {
+export default function Page() {
   const [step, setStep] = useState(1);
 
   function handleNext() {
