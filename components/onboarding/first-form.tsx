@@ -22,10 +22,10 @@ export default function FirstPage() {
   return (
     <>
       <CardHeader>
-        <CardTitle>Welcome! Let's get to know you</CardTitle>
+        <CardTitle>Welcome! Let&apos;s get to know you</CardTitle>
         <CardDescription>
-          To start, tell us a bit about yourself. We'll use this to personalize
-          your experience
+          To start, tell us a bit about yourself. We&apos;ll use this to
+          personalize your experience
         </CardDescription>
       </CardHeader>
       <CardContent>
