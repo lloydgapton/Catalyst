@@ -37,28 +37,34 @@ export default function SecondPage() {
                 exploring?
               </FieldLabel>
 
-              <RadioGroup defaultValue="">
+              <RadioGroup defaultValue="" name="career-interest" aria-label="Select your career interest">
                 {careers.map((career, i) => (
-                  <div className="flex items-center gap-3" key={i}>
-                    <RadioGroupItem value={career.value} id={`i${i}`} />
-                    <Label htmlFor={`i${i}`}>{career.label}</Label>
+                  <div className="flex items-center gap-3" key={career.value}>
+                    <RadioGroupItem value={career.value} id={`career-${career.value}`} />
+                    <Label htmlFor={`career-${career.value}`}>{career.label}</Label>
                   </div>
                 ))}
               </RadioGroup>
             </Field>
             <Field>
-              <FieldLabel>Why are you interested in this field?</FieldLabel>
-              <Input type="text" />
+              <FieldLabel htmlFor="interest-reason">Why are you interested in this field?</FieldLabel>
+              <Input 
+                type="text"
+                id="interest-reason"
+                name="interest-reason"
+                aria-label="Explain why you are interested in this field"
+                placeholder="Share your motivation..."
+              />
             </Field>
             <Field>
               <FieldLabel>
-                What do you hope to achieve from this program
-              </FieldLabel>{" "}
-              <RadioGroup defaultValue="">
-                {achieves.map((achieve, i) => (
-                  <div className="flex items-center gap-3" key={i}>
-                    <RadioGroupItem value={achieve.value} id={`i${i}`} />
-                    <Label htmlFor={`i${i}`}>{achieve.label}</Label>
+                What do you hope to achieve from this program?
+              </FieldLabel>
+              <RadioGroup defaultValue="" name="achievement-goal" aria-label="Select your primary goal">
+                {achieves.map((achieve) => (
+                  <div className="flex items-center gap-3" key={achieve.value}>
+                    <RadioGroupItem value={achieve.value} id={`achieve-${achieve.value}`} />
+                    <Label htmlFor={`achieve-${achieve.value}`}>{achieve.label}</Label>
                   </div>
                 ))}
               </RadioGroup>

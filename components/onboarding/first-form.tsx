@@ -35,18 +35,22 @@ export default function FirstPage() {
               <FieldLabel htmlFor="fullName">Full Name</FieldLabel>
               <Input
                 id="fullName"
+                name="fullName"
                 type="text"
                 placeholder="John Doe"
                 required
+                aria-label="Your full name"
               />
             </Field>
             <Field>
               <FieldLabel htmlFor="email">Email</FieldLabel>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="mail@mail.com"
                 required
+                aria-label="Your email address"
               />
             </Field>
             <Field>
