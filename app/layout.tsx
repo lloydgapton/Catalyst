@@ -13,8 +13,8 @@ import Navbar from '../components/ui/Navbar'
 // });
 
 export const metadata: Metadata = {
-  title: "Catalyst CRM",
-  description: "A CRM for Wild Fusion Digital",
+  title: "Catalyst",
+  description: "A Student Web Portal",
 };
 
 export default function RootLayout({
