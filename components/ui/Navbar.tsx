@@ -17,43 +17,43 @@ export default function Navbar() {
 
       <ul className="flex flex-row md:flex-col gap-2 p-2 md:gap-3 flex-1 md:mt-3">
         <li className="flex-1 md:flex-none">
-          <a
+          <Link
             href="/"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <LayoutDashboard size={18} />
             <span className="hidden md:inline">Dashboard</span>
-          </a>
+          </Link>
         </li>
 
         <li className="flex-1 md:flex-none">
-          <a
+          <Link
             href="/tickets"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <Tickets size={18} />
             <span className="hidden md:inline">Tickets</span>
-          </a>
+          </Link>
         </li>
 
         <li className="flex-1 md:flex-none">
-          <a
+          <Link
             href="/"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <Users size={18} />
             <span className="hidden md:inline">Students</span>
-          </a>
+          </Link>
         </li>
 
         <li className="flex-1 md:flex-none">
-          <a
+          <Link
             href="/"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <Activity size={18} />
             <span className="hidden md:inline">Activities</span>
-          </a>
+          </Link>
         </li>
 
         <li
@@ -64,13 +64,13 @@ export default function Navbar() {
         ></li>
 
         <li className="flex-1 md:flex-none">
-          <a
+          <Link
             href="#"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <LogOutIcon size={18} />
             <span className="hidden md:inline">Sign Out</span>
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
