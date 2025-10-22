@@ -43,7 +43,7 @@ export default function Page() {
               </Button>
               <Button 
                 onClick={handleNext}
-                disabled={step === 4}
+                // disabled={step === 4}
                 aria-label={step === 4 ? "No next step available" : "Go to next step"}
               >
                 {step === 4 ? "Complete" : "Next"}

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,10 +16,39 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Separator } from "./ui/separator";
+import { useAuth } from "@/AuthContext";
+import { useRouter } from "next/navigation";
+// import { useForm, SubmitHandler } from "react-hook-form";
 
 export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { signup } = useAuth();
+  const router = useRouter()
+  // const { register, handleSubmit } = useForm();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      signup(email, password);
+      router.push('/dashboard')
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err);
+      }else{
+
+      console.log("unknown error");
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
   return (
     <Card {...props}>
       <CardHeader>
@@ -27,7 +58,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -35,9 +66,12 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 id="email"
                 name="email"
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 placeholder="m@example.com"
                 autoComplete="email"
                 required
+                //{...register("email")}
               />
             </Field>
             <Field>
@@ -46,8 +80,11 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 id="password"
                 name="password"
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 autoComplete="new-password"
                 required
+                //{...register("password")}
               />
             </Field>
             <Field>
@@ -58,13 +95,18 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 id="confirm-password"
                 name="confirmPassword"
                 type="password"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
                 autoComplete="new-password"
                 required
+                //{...register("passwordConfirm")}
               />
             </Field>
             <FieldGroup>
               <Field>
-                <Button type="submit">Create Account</Button>
+                <Button type="submit" disabled={loading}>
+                  Create Account
+                </Button>
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
                     <Separator />
