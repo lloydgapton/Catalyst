@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
   // Help Next.js resolve the correct workspace root on CI (e.g., Vercel)
   // when multiple lockfiles exist on the machine.
   outputFileTracingRoot: path.resolve(__dirname),
+  experimental: {
+    // Disable Next.js Lightning CSS optimizer to avoid native binary on CI
+    optimizeCss: false,
+  },
 };
 
 export default nextConfig;
