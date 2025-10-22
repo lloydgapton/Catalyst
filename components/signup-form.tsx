@@ -29,21 +29,20 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   const [loading, setLoading] = useState(false);
 
   const { signup } = useAuth();
-  const router = useRouter()
+  const router = useRouter();
   // const { register, handleSubmit } = useForm();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       setLoading(true);
-      signup(email, password);
-      router.push('/dashboard')
+      await signup(email, password);
+      router.push("/dashboard");
     } catch (err: unknown) {
       if (err instanceof Error) {
         console.error(err);
-      }else{
-
-      console.log("unknown error");
+      } else {
+        console.log("unknown error");
       }
     } finally {
       setLoading(false);
