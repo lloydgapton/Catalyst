@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -7,6 +8,9 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  // Help Next.js resolve the correct workspace root on CI (e.g., Vercel)
+  // when multiple lockfiles exist on the machine.
+  outputFileTracingRoot: path.resolve(__dirname),
 };
 
 export default nextConfig;
