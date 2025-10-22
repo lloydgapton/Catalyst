@@ -1,12 +1,13 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "./firebase/firebase";
+import { auth, db } from "./firebase/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   User,
 } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 interface value {
   signup: (email: string, password: string) => void;
@@ -38,8 +39,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return unsubscribe;
   }, []);
 
-  function signup(email: string, password: string) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  async function signup(email: string, password: string) {
+    const userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
+    const user = userCredentials.user;
+    await setDoc(doc(db, "students", user.uid), {
+      email: user.email,
+      createdAt: new Date(),
+    });
+    return user;
   }
 
   function login(email: string, password: string) {

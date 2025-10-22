@@ -12,11 +12,11 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-8 flex gap-4">
-              <Link href="/onboarding" className="inline-flex items-center px-5 py-3 bg-primary text-primary-foreground rounded-md shadow-sm">
-                Start Assessment
+              <Link href="/login" className="inline-flex items-center px-5 py-3 bg-primary text-primary-foreground rounded-md shadow-sm">
+                Sign In
               </Link>
-              <Link href="/signup" className="inline-flex items-center px-5 py-3 border rounded-md">
-                Create Account
+              <Link href="/signup" className="inline-flex items-center px-5 py-3 bg-primary text-primary-foreground rounded-md shadow-sm">
+                Sign Up
               </Link>
             </div>
 

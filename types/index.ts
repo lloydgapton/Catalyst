@@ -1,7 +1,7 @@
 export interface UserProfile {
   id: string;
   name: string;
-  email: string;
+  email?: string;
   tier: UserTier;
   avatarUrl?: string;
 }

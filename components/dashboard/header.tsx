@@ -7,14 +7,13 @@ import { useAuth } from "@/lib/auth.client";
 
 export function DashboardHeader() {
   const { user, loading, signIn, signOut } = useAuth();
-
   return (
     <header className="border-b bg-white">
       <div className="flex h-16 items-center px-4 gap-4">
         <div className="flex-1">
           <h1 className="text-lg font-semibold">Dashboard</h1>
         </div>
-        
+
         {/* Notifications */}
         <Button variant="ghost" size="icon" className="relative">
           <Bell className="h-5 w-5" />
@@ -35,22 +34,28 @@ export function DashboardHeader() {
                 {user.avatarUrl ? (
                   <AvatarImage src={user.avatarUrl} alt={user.name} />
                 ) : (
-                  <AvatarFallback>{user.name?.split(' ').map(n=>n[0]).slice(0,2).join('') ?? 'U'}</AvatarFallback>
+                  <AvatarFallback>
+                    {user.name
+                      ?.split(" ")
+                      .map(n => n[0])
+                      .slice(0, 2)
+                      .join("") ?? "U"}
+                  </AvatarFallback>
                 )}
               </Avatar>
-              <Button variant="ghost" size="sm" onClick={() => signOut()}>
+              <Button variant="outline" size="sm" onClick={() => signOut()}>
                 Sign out
               </Button>
             </>
           ) : (
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={() => signIn()}>
-                Sign in
-              </Button>
-            </div>
+            // Fallback: no user → show sign in
+            <Button variant="outline" size="sm" onClick={() => signIn()}>
+              Sign in
+            </Button>
           )}
         </div>
       </div>
     </header>
   );
 }
+export default DashboardHeader;
