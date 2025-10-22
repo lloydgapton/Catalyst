@@ -48,7 +48,7 @@ export default function LandingPage() {
 
       <section className="border-t">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <h3 className="text-2xl font-semibold">What you'll get</h3>
+          <h3 className="text-2xl font-semibold">What you&apos;ll get</h3>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="p-6 border rounded-lg">
               <h4 className="font-medium">Personalized Plan</h4>
