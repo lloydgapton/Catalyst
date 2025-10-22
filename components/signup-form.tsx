@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,10 +17,27 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { loadOnboardingAnswers } from "@/lib/onboarding-storage";
 import { Separator } from "./ui/separator";
 
-export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
+export function SignupForm({ next, ...props }: { next?: string } & React.ComponentProps<typeof Card>) {
+  const router = useRouter();
+  const [prefillEmail, setPrefillEmail] = useState<string | undefined>(undefined);
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    // TODO: Call signup API (email+password) and create user
+    // For now, simulate successful signup and redirect to next or dashboard
+    const destination = next ? decodeURIComponent(next) : '/dashboard';
+    router.push(destination);
+  };
+
+  useEffect(() => {
+    const saved = loadOnboardingAnswers();
+    if (saved && saved.email) setPrefillEmail(saved.email);
+  }, []);
+
   return (
     <Card {...props}>
       <CardHeader>
@@ -27,7 +47,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="email">Email</FieldLabel>
@@ -38,6 +58,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 placeholder="m@example.com"
                 autoComplete="email"
                 required
+                defaultValue={prefillEmail}
               />
             </Field>
             <Field>

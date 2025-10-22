@@ -29,7 +29,7 @@ export default function FirstPage() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <div>
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="fullName">Full Name</FieldLabel>
@@ -83,7 +83,7 @@ export default function FirstPage() {
               </Select>
             </Field>
           </FieldGroup>
-        </form>
+        </div>
       </CardContent>
     </>
   );

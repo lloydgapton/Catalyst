@@ -17,7 +17,7 @@ export default function FourthPage() {
         <CardTitle>What draws you most?</CardTitle>
       </CardHeader>
       <CardContent>
-        <form>
+        <div>
           <FieldGroup>
             <Field>
               <FieldLabel >Preferred learning style</FieldLabel>
@@ -63,7 +63,7 @@ export default function FourthPage() {
               </Select>
             </Field>
           </FieldGroup>
-        </form>
+        </div>
       </CardContent>
     </>
   );

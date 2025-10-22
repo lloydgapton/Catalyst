@@ -18,7 +18,7 @@ export default function ThirdPage() {
         <CardTitle>What draws you most?</CardTitle>
       </CardHeader>
       <CardContent>
-        <form>
+        <div>
           <FieldGroup>
             <Field>
               <FieldLabel >Have you taken any tech courses before?</FieldLabel>
@@ -74,7 +74,7 @@ export default function ThirdPage() {
               />
             </Field>
           </FieldGroup>
-        </form>
+        </div>
       </CardContent>
     </>
   );
