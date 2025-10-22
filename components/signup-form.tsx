@@ -1,7 +1,5 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,40 +16,35 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import React, { useState } from "react";
 import { Separator } from "./ui/separator";
 import { useAuth } from "@/AuthContext";
-import { loadOnboardingAnswers } from "@/lib/onboarding-storage";
+import { useRouter } from "next/navigation";
+// import { useForm, SubmitHandler } from "react-hook-form";
 
-export function SignupForm({ next, ...props }: { next?: string } & React.ComponentProps<typeof Card>) {
-  const router = useRouter();
-  const { signup } = useAuth();
-
+export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const saved = loadOnboardingAnswers();
-    if (saved && saved.email) setEmail(saved.email);
-  }, []);
+  const { signup } = useAuth();
+  const router = useRouter();
+  // const { register, handleSubmit } = useForm();
+  //
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (password !== passwordConfirm) {
-      // Simple validation: passwords must match
-      alert("Passwords do not match");
-      return;
-    }
-
     try {
       setLoading(true);
       await signup(email, password);
-      const destination = next ? decodeURIComponent(next) : "/dashboard";
-      router.push(destination);
+      router.push("/onboarding");
     } catch (err: unknown) {
-      console.error(err);
-      alert("Signup failed. Check console for details.");
+      if (err instanceof Error) {
+        console.error(err);
+      } else {
+        console.log("unknown error");
+      }
     } finally {
       setLoading(false);
     }
@@ -78,7 +71,7 @@ export function SignupForm({ next, ...props }: { next?: string } & React.Compone
                 placeholder="m@example.com"
                 autoComplete="email"
                 required
-                // Prefilled from onboarding answers if available
+                //{...register("email")}
               />
             </Field>
             <Field>

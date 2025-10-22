@@ -39,7 +39,7 @@ export function LoginForm({
     try {
       setLoading(true);
       await login(email, password);
-      router.push("/dashboard");
+      router.push("/onboarding");
     } catch (err: unknown) {
       if (err instanceof Error) {
         console.error(err);
