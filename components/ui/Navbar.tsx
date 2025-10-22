@@ -17,7 +17,7 @@ export default function Navbar() {
       <ul className="flex flex-row md:flex-col gap-2 p-2 md:gap-3 flex-1 md:mt-3">
         <li className="flex-1 md:flex-none">
           <Link
-            href="/"
+            href="/dashboard"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <LayoutDashboard size={18} />
@@ -27,7 +27,7 @@ export default function Navbar() {
 
         <li className="flex-1 md:flex-none">
           <Link
-            href="/tickets"
+            href="/dashboard"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <Tickets size={18} />
@@ -37,7 +37,7 @@ export default function Navbar() {
 
         <li className="flex-1 md:flex-none">
           <Link
-            href="/"
+            href="/dashboard"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <Users size={18} />
@@ -47,7 +47,7 @@ export default function Navbar() {
 
         <li className="flex-1 md:flex-none">
           <Link
-            href="/"
+            href="dashboard/"
             className="flex h-12 items-center justify-center md:justify-start gap-2 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 transition-colors"
           >
             <Activity size={18} />

@@ -36,7 +36,7 @@ export default function FirstPage({ formData, updateField }: FirstPageProps) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <div>
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="fullName">Full Name</FieldLabel>
@@ -91,7 +91,7 @@ export default function FirstPage({ formData, updateField }: FirstPageProps) {
               </Select>
             </Field>
           </FieldGroup>
-        </form>
+        </div>
       </CardContent>
     </>
   );

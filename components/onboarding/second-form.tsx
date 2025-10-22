@@ -29,7 +29,7 @@ export default function SecondPage() {
         <CardTitle>Career Goals</CardTitle>
       </CardHeader>
       <CardContent>
-        <form>
+        <div>
           <FieldGroup>
             <Field>
               <FieldLabel>
@@ -70,7 +70,7 @@ export default function SecondPage() {
               </RadioGroup>
             </Field>
           </FieldGroup>
-        </form>
+        </div>
       </CardContent>
     </>
   );
