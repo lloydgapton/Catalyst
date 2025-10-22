@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/AuthContext";
 import {
   CardContent,
   CardDescription,
@@ -16,8 +17,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function FirstPage() {
+type FirstPageProps = {
+  formData: { [key: string]: string };
+  updateField: (key: string, value: string) => void;
+};
+
+export default function FirstPage({ formData, updateField }: FirstPageProps) {
   const occupations = ["Student", "Graduate", "Working Professional", "Other"];
+  // const { currentUser } = useAuth();
 
   return (
     <>
@@ -49,6 +56,7 @@ export default function FirstPage() {
                 name="email"
                 type="email"
                 placeholder="mail@mail.com"
+                // value={currentUser.email}
                 required
                 aria-label="Your email address"
               />

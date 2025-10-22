@@ -31,13 +31,14 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   const { signup } = useAuth();
   const router = useRouter();
   // const { register, handleSubmit } = useForm();
+  //
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       setLoading(true);
       await signup(email, password);
-      router.push("/dashboard");
+      router.push("/onboarding");
     } catch (err: unknown) {
       if (err instanceof Error) {
         console.error(err);
