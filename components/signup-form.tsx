@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,64 +18,44 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-import { loadOnboardingAnswers } from "@/lib/onboarding-storage";
-=======
-import React, { useState } from "react";
->>>>>>> origin/master
 import { Separator } from "./ui/separator";
 import { useAuth } from "@/AuthContext";
-import { useRouter } from "next/navigation";
-// import { useForm, SubmitHandler } from "react-hook-form";
+import { loadOnboardingAnswers } from "@/lib/onboarding-storage";
 
-<<<<<<< HEAD
 export function SignupForm({ next, ...props }: { next?: string } & React.ComponentProps<typeof Card>) {
   const router = useRouter();
-  const [prefillEmail, setPrefillEmail] = useState<string | undefined>(undefined);
+  const { signup } = useAuth();
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-    // TODO: Call signup API (email+password) and create user
-    // For now, simulate successful signup and redirect to next or dashboard
-    const destination = next ? decodeURIComponent(next) : '/dashboard';
-    router.push(destination);
-  };
-
-  useEffect(() => {
-    const saved = loadOnboardingAnswers();
-    if (saved && saved.email) setPrefillEmail(saved.email);
-  }, []);
-
-=======
-export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { signup } = useAuth();
-  const router = useRouter()
-  // const { register, handleSubmit } = useForm();
+  useEffect(() => {
+    const saved = loadOnboardingAnswers();
+    if (saved && saved.email) setEmail(saved.email);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (password !== passwordConfirm) {
+      // Simple validation: passwords must match
+      alert("Passwords do not match");
+      return;
+    }
+
     try {
       setLoading(true);
-      signup(email, password);
-      router.push('/dashboard')
+      await signup(email, password);
+      const destination = next ? decodeURIComponent(next) : "/dashboard";
+      router.push(destination);
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(err);
-      }else{
-
-      console.log("unknown error");
-      }
+      console.error(err);
+      alert("Signup failed. Check console for details.");
     } finally {
       setLoading(false);
     }
   }
->>>>>>> origin/master
   return (
     <Card {...props}>
       <CardHeader>
@@ -97,11 +78,7 @@ export function SignupForm({ ...props }: React.ComponentProps<typeof Card>) {
                 placeholder="m@example.com"
                 autoComplete="email"
                 required
-<<<<<<< HEAD
-                defaultValue={prefillEmail}
-=======
-                //{...register("email")}
->>>>>>> origin/master
+                // Prefilled from onboarding answers if available
               />
             </Field>
             <Field>
